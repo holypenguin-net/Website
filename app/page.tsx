@@ -1,10 +1,6 @@
-export default function home({childrens}){
+export default function home(){
     return(
         <>
-            <h1>NAVBAR</h1>
-            <div>
-                {children}
-            </div>
         </>
     )
 }
