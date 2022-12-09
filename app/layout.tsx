@@ -11,7 +11,7 @@ import minecraft from "../public/icons/minecraft.svg";
 import terraria from "../public/icons/terraria.svg";
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
-  let image_size = 200;
+  let image_size = 300;
 
   return (
     <html>
