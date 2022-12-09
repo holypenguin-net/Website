@@ -2,13 +2,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import "./globals.css";
 import style from "./navbar.module.css";
-import logo from "../public/icons/dark/logo_dark.svg";
 import nav_icon from "../public/icons/dark/nav_icon_dark.svg";
+import logo from "../public/icons/dark/logo_dark.svg";
 import server from "../public/icons/dark/server_dark.svg";
 import games from "../public/icons/dark/game_dark.svg";
-import discord from "../public/icons/discord.svg";
 import minecraft from "../public/icons/minecraft.svg";
 import terraria from "../public/icons/terraria.svg";
+import discord from "../public/icons/discord.svg";
+
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   let image_size = 300;
@@ -28,51 +29,51 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           </li>
 
           <li className={style.nav_item}>
-            <Link href="/games" className={style.nav_link}>
-              <Image src={logo} alt='Home' width={image_size} height={image_size}/>
+            <Link href="/news" className={style.nav_link}>
+              <Image src={logo} alt='News' width={image_size} height={image_size}/>
               <span className={style.link_text}>News</span>
             </Link>
           </li>
 
           <li className={style.nav_item}>
-            <Link href="/games" className={style.nav_link}>
-              <Image src={server} alt='Home' width={image_size} height={image_size}/>
-              <span className={style.link_text}>Meine Server</span>
+            <Link href="/my_servers" className={style.nav_link}>
+              <Image src={server} alt='My Servers' width={image_size} height={image_size}/>
+              <span className={style.link_text}>My Servers</span>
             </Link>
           </li>
 
           <li className={style.nav_item}>
             <Link href="/games" className={style.nav_link}>
-              <Image src={games} alt='Home' width={image_size} height={image_size}/>
+              <Image src={games} alt='Games' width={image_size} height={image_size}/>
               <span className={style.link_text}>Games</span>
             </Link>
           </li>
 
           <li className={style.nav_item}>
-            <Link href="/games" className={style.nav_link}>
-              <Image src={minecraft} alt='Home' width={image_size} height={image_size}/>
+            <Link href="/games/minecraft" className={style.nav_link}>
+              <Image src={minecraft} alt='Minecraft' width={image_size} height={image_size}/>
               <span className={style.link_text}>Minecraft</span>
             </Link>
           </li>
 
           <li className={style.nav_item}>
-            <Link href="/games" className={style.nav_link}>
-              <Image src={terraria} alt='Home' width={image_size} height={image_size}/>
+            <Link href="/games/terraria" className={style.nav_link}>
+              <Image src={terraria} alt='Terraria' width={image_size} height={image_size}/>
               <span className={style.link_text}>Terraria</span>
             </Link>
           </li>
 
           <div className={style.nav_last_item}>
             <li className={style.nav_item}>
-              <Link href="/login" className={style.nav_link}>
-                <Image src={discord} alt='Home' width={image_size} height={image_size}/>
+              <Link href="/discord" className={style.nav_link}>
+                <Image src={discord} alt='Discord' width={image_size} height={image_size}/>
                 <span className={style.link_text}>Discord</span>
               </Link>
             </li>
 
             <li className={style.nav_item}>
               <Link href="/login" className={style.nav_link}>
-                <Image src={logo} alt='Home' width={image_size} height={image_size}/>
+                <Image src={logo} alt='Login' width={image_size} height={image_size}/>
                 <span className={style.link_text}>Login</span>
               </Link>
             </li>
