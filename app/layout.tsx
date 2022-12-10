@@ -18,6 +18,8 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
     <html>
       <head />
       <body>
+
+        {/* Navbar left */}
         <nav className={style.navbar}>
           <ul className={style.navbar_nav}>
 
