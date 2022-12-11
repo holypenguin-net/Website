@@ -28,30 +28,35 @@ export default function login(){
                 setStrength2("");
                 setStrength3("");
                 setStrength4("");
+                setPw_Color(style.pw_color_red);
                 break;
             case 1:
                 setStrength1(style.bar_show);
                 setStrength2("");
                 setStrength3("");
                 setStrength4("");
+                setPw_Color(style.pw_color_red);
                 break;
             case 2:
                 setStrength1(style.bar_show);
                 setStrength2(style.bar_show);
                 setStrength3("");
                 setStrength4("");
+                setPw_Color(style.pw_color_red);
                 break;
             case 3:
                 setStrength1(style.bar_show);
                 setStrength2(style.bar_show);
                 setStrength3(style.bar_show);
                 setStrength4("");
+                setPw_Color(style.pw_color_red);
                 break;
             case 4:
                 setStrength1(style.bar_show);
                 setStrength2(style.bar_show);
                 setStrength3(style.bar_show);
                 setStrength4(style.bar_show);
+                setPw_Color(style.pw_color_green);
                 break;
             }
 
@@ -88,6 +93,8 @@ export default function login(){
     const [strength2, setStrength2] = useState("");
     const [strength3, setStrength3] = useState("");
     const [strength4, setStrength4] = useState("");
+    
+    const [pw_color, setPw_Color] = useState(style.pw_color_red);
 
     return(
         <>
@@ -99,7 +106,7 @@ export default function login(){
                     </div>
 
                     <div className={style.field}>
-                        <input type={showPassword ? "text" : "password"} className={style.input} placeholder=" " onInput={validatePassword}/>
+                        <input type={showPassword ? "text" : "password"} className={`${style.input} ${pw_color}`} placeholder=" " onInput={validatePassword}/>
                         <label htmlFor="password" className={style.label}>Password</label>
 
                        

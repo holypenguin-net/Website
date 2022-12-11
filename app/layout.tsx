@@ -3,12 +3,14 @@ import Link from 'next/link';
 import "./globals.css";
 import style from "./navbar.module.css";
 import nav_icon from "../public/icons/dark/nav_icon_dark.svg";
+import news from "../public/icons/dark/news_dark.svg";
 import logo from "../public/icons/dark/logo_dark.svg";
 import server from "../public/icons/dark/server_dark.svg";
 import games from "../public/icons/dark/game_dark.svg";
 import minecraft from "../public/icons/minecraft.svg";
 import terraria from "../public/icons/terraria.svg";
 import discord from "../public/icons/discord.svg";
+import login from "../public/icons/dark/login_dark.svg";
 
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
@@ -32,7 +34,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 
           <li className={style.nav_item}>
             <Link href="/news" className={style.nav_link}>
-              <Image src={logo} alt='News' width={image_size} height={image_size}/>
+              <Image src={news} alt='News' width={image_size} height={image_size}/>
               <span className={style.link_text}>News</span>
             </Link>
           </li>
@@ -75,7 +77,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 
             <li className={style.nav_item}>
               <Link href="/login" className={style.nav_link}>
-                <Image src={logo} alt='Login' width={image_size} height={image_size}/>
+                <Image src={login} alt='Login' width={image_size} height={image_size}/>
                 <span className={style.link_text}>Login</span>
               </Link>
             </li>

@@ -5,6 +5,13 @@
     transform: translate(-50% , -50%);
   }
 
+.pw_color_green{
+    color: yellowgreen;
+}
+.pw_color_red{
+    color: orangered;
+}
+
 .field {
     width: 100%;
     position: relative;
@@ -47,16 +54,15 @@
     width: 100%;
     padding: 0.25rem 0;
     background: none;
-    color: white;
     font-size: 1rem;
 }
 
-.input:valid {
+.input[type=email]:valid {
     color: yellowgreen;
 }
 
-.input:invalid {
-    color: orangered;;
+.input[type=email]:invalid {
+    color: orangered;
 }
 
 .field::after {
