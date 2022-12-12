@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "init": "cd ./init && npx ts-node ./init.ts; cd .."
   },
   "dependencies": {
     "@types/node": "18.11.11",
