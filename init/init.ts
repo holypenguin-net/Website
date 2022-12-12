@@ -32,7 +32,7 @@ async function main(){
     
     // Check if Tables existing
     let res = await queryDB(client, dt);
-    if(checkTables(tables, res.rows)){
+    if(await checkTables(tables, res.rows)){
         console.log("Tables already existing!");
         process.exit(0);
     }
@@ -41,16 +41,13 @@ async function main(){
     console.log("Creating DB...");
     await queryDB(client, sqlFile);
     res = await queryDB(client, dt);
-    if(res){
-        console.log(res.rows);
-    }
     process.exit(0);
 };
 
 async function queryDB(client: Client, query: string){
     const queryJSON = {
         text: query,
-        rowMode: 'array'
+        //rowMode: 'array'
     }
     try{
         const res = await client.query(queryJSON);
@@ -61,16 +58,24 @@ async function queryDB(client: Client, query: string){
     };
 };
 
-function checkTables(tables: Array<string>, list: any){
+async function checkTables(tables: Array<string>, existingTables: Array<any>){
+    // Declaring needed Vars
+    let table;
+    let list = [];
     let item;
-    console.log(list);
-    console.log(tables);
-    for(item of list){
-        console.log(item);
-        if(!tables.includes(item.game_name)){
+
+    // Remap existingTables to simple Array
+    for(item of existingTables){
+        list.push(item.table_name);
+    };
+
+    // Check if table is in List
+    for(table of tables){
+        if(!list.includes(table)){
             return false;
         }
-    }
+    };
+    return true;
 }
 
 main();
