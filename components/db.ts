@@ -9,9 +9,6 @@ export default function db(){
         database: "holypenguin"
     });
     client.connect()
-    .then(()=>{
-        console.log("Connected to DB!");
-    })
     .catch(err => console.log("ERROR: ", err));
     return client;
 };
