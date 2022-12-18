@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -e
+
+# Which branch are we on
+branch="$(git rev-parse --abbrev-ref HEAD)"
+
+# If we are on master
+if [ $branch = "main" ]; then
+
+    # Build
+    printf "\e[1;33mpre-push:\e[0m: npm run build\n"
+    npm run build
+    if [ $? -eq 0 ]
+    then
+        printf "\e[1;32mSuccessful:\e[0m Behat\n"
+    else
+        printf "\e[1;31mError:\e[0m Behat\n"
+        exit 1
+    fi
+fi
+
+exit 0
