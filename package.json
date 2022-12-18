@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "init": "cd ./init && npx ts-node ./init.ts; cd ..",
-    "pre-dev": "npm install; git config core.hooksPath .githooks"
+    "pre-dev": "npm install; git config core.hooksPath .githook"
   },
   "dependencies": {
     "@types/node": "18.11.11",
