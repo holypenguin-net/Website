@@ -13,9 +13,9 @@ if [ $branch = "main" ]; then
     npm run build
     if [ $? -eq 0 ]
     then
-        printf "\e[1;32mSuccessful:\e[0m Behat\n"
+        printf "\e[1;32mSuccessful:\e[0m npm run build\n"
     else
-        printf "\e[1;31mError:\e[0m Behat\n"
+        printf "\e[1;31mError:\e[0m npm run build\n"
         exit 1
     fi
 fi
