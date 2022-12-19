@@ -12,7 +12,8 @@ async function main(){
         "GameVersion",
         "GameType",
         "Server",
-        "User"
+        "User",
+        "Token"
     ];
 
 
