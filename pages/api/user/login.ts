@@ -12,9 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         usr_Nickname: !req.body.usr_Nickname ? undefined : req.body.usr_Nickname,
         usr_Email: !req.body.usr_Email ? undefined : req.body.usr_Email,
         usr_Password: !req.body.usr_Password ? undefined : req.body.usr_Password
-    };
-
-    console.log(user.user);
+    }
 
     user.login()
         .then((queryRes) => {
@@ -44,7 +42,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
                 statusName: 'Internal Server Error',
                 statusCode: 500,
                 isError: true,
-                msg: apiRes
+                msg: e
            };
         });
 };

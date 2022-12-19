@@ -1,12 +1,13 @@
 import type {Client} from 'pg';
+import { Token } from './token';
 
 export type userType = {
-    usr_ID_PK?: number | undefined | null,
-    usr_Nickname?: string | undefined | null,
-    usr_Email?: string | undefined | null,
-    usr_Password?: string | undefined | null,
-    usr_Discord?: string | undefined | null,
-    usr_Admin?:boolean | undefined | null
+    usr_ID_PK?: number | undefined,
+    usr_Nickname?: string | undefined,
+    usr_Email?: string | undefined,
+    usr_Password?: string | undefined,
+    usr_Discord?: string | undefined,
+    usr_Admin?:boolean | undefined
 }
 
 export class User{
@@ -17,18 +18,10 @@ export class User{
     private client: Client;
 
     constructor(client: Client, user?: userType | undefined){
-        if(user != undefined){
+        if(user){
             this.user = user;
-        }else{
-            this.user = {
-                usr_ID_PK: undefined,
-                usr_Nickname: undefined,
-                usr_Email: undefined,
-                usr_Password: undefined,
-                usr_Discord: undefined,
-                usr_Admin: false
-            };
         }
+
         this.client = client;
     };
 
@@ -50,8 +43,22 @@ export class User{
             const stmt = 'SELECT * FROM "User" WHERE (usr_Nickname = $1 OR usr_Email = $2) AND usr_Password = $3;';
             const values = [this.user?.usr_Nickname, this.user?.usr_Email, this.user?.usr_Password];
             await this.client.query(stmt, values)
-                .then((res: object) => {
-                    resolve(res);
+                .then(async (res) => {
+                    if(res.rowCount != 0){
+                        const info = {
+                            usr_ID_FK: res.rows[0].usr_id_pk
+                        };
+                        const token = new Token(this.client, info);
+                        await token.generateToken()
+                            .then((res) => {
+                                resolve(res);
+                            })
+                            .catch((e) => {
+                                reject(e);
+                            })
+                    }else{
+                        resolve(res);
+                    }
                 })
                 .catch((e) => {
                    reject(e); 
