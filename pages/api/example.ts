@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import db from '../../components/db';
-import type { APIResponse, APIStatus } from '../../components/api';
+import db from '../../lib/functions/db';
+import type { APIResponse, APIStatus } from '../../lib/types/api';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<APIResponse>) {
     const client = db();
