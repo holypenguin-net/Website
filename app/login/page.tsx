@@ -10,6 +10,45 @@ export default function login(){
     let strength = 0;
     let validations = []
 
+    function checkLogin(e: any) {
+        e.preventDefault();
+        if(strength4 === style.bar_show) {
+    
+    
+            
+    
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+    
+        var raw = JSON.stringify({
+        "usr_Email": e.target.email.value,
+        "usr_Password": e.target.password.value,
+        "keepLogin": false
+        });
+    
+        var requestOptions: RequestInit = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+        };
+    
+        fetch("http://172.16.0.102:3000/api/user/login", requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            if(!JSON.parse(result).isError){
+                console.log("ANGEMELDET")
+            }else{
+                console.log("VERPISSDICH")
+            }
+        })
+        .catch(error => console.log('error', error));
+        } 
+        else {
+            console.log("not valide")
+        }
+    }
+
     function validatePassword(e:React.ChangeEvent<HTMLInputElement>) {
         const password = e.target.value;
 
@@ -99,17 +138,15 @@ export default function login(){
     return(
         <>
             <div className={style.center}>
-                <form>
+                <form onSubmit={checkLogin}>
                     <div className={style.field}>
                         <input type="email" name="email" className={style.input} placeholder=" " />
                         <label htmlFor="email" className={style.label}>Email</label>
                     </div>
 
                     <div className={style.field}>
-                        <input type={showPassword ? "text" : "password"} className={`${style.input} ${pw_color}`} placeholder=" " onInput={validatePassword}/>
+                        <input type={showPassword ? "text" : "password"} name="password" className={`${style.input} ${pw_color}`} placeholder=" " onInput={validatePassword}/>
                         <label htmlFor="password" className={style.label}>Password</label>
-
-                       
                     </div>
                 
 
