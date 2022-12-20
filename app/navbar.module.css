@@ -132,7 +132,7 @@
     }
   }
   
-  .dark {
+  /* .dark {
     --text-primary: #b6b6b6;
     --text-secondary: #ececec;
     --bg-primary: #23232e;
@@ -151,13 +151,13 @@
     --text-secondary: #35535c;
     --bg-primary: #fdf6e3;
     --bg-secondary: #f5e5b8;
-  }
+  } */
   
   .theme-icon {
     display: none;
   }
   
-  .dark #darkIcon {
+  /* .dark #darkIcon {
     display: block;
   }
   
@@ -167,4 +167,4 @@
   
   .solar #solarIcon {
     display: block;
-  }
+  } */

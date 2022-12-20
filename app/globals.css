@@ -5,12 +5,15 @@
   --text-secondary: #ececec;
   --bg-primary: #23232e;
   --bg-secondary: #141418;
+  --color-orange: #e75506;
+  --color-bright-iceblue: #01afac;
+  --color-dark-iceblue: #028381;
   --transition-speed: 600ms;
 }
 
 body {
-  color: black;
-  background-color: white;
+  color: white;
+  background-color: #2e2e3a;
   padding: 0;
   margin: 0;
 }
@@ -24,7 +27,12 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: #38ebff;
+    background-color: var(--color-bright-iceblue);
+}
+
+form {
+  --text-color: #afafaf;
+  max-width: 500px;
 }
 
 main {
