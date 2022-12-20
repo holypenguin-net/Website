@@ -1,0 +1,9 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "isolatedModules": false,
+        "target": "es6",
+        "module": "CommonJS"
+    },
+    "type": "module"
+}

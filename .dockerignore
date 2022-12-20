@@ -1,4 +1,6 @@
 node_modules
 .next
-.vscode
+.git
+.github
+.githook
 init.sh

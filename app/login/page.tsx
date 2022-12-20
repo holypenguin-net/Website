@@ -28,30 +28,35 @@ export default function login(){
                 setStrength2("");
                 setStrength3("");
                 setStrength4("");
+                setPw_Color(style.pw_color_red);
                 break;
             case 1:
                 setStrength1(style.bar_show);
                 setStrength2("");
                 setStrength3("");
                 setStrength4("");
+                setPw_Color(style.pw_color_red);
                 break;
             case 2:
                 setStrength1(style.bar_show);
                 setStrength2(style.bar_show);
                 setStrength3("");
                 setStrength4("");
+                setPw_Color(style.pw_color_red);
                 break;
             case 3:
                 setStrength1(style.bar_show);
                 setStrength2(style.bar_show);
                 setStrength3(style.bar_show);
                 setStrength4("");
+                setPw_Color(style.pw_color_red);
                 break;
             case 4:
                 setStrength1(style.bar_show);
                 setStrength2(style.bar_show);
                 setStrength3(style.bar_show);
                 setStrength4(style.bar_show);
+                setPw_Color(style.pw_color_green);
                 break;
             }
 
@@ -88,6 +93,8 @@ export default function login(){
     const [strength2, setStrength2] = useState("");
     const [strength3, setStrength3] = useState("");
     const [strength4, setStrength4] = useState("");
+    
+    const [pw_color, setPw_Color] = useState(style.pw_color_red);
 
     return(
         <>
@@ -99,7 +106,7 @@ export default function login(){
                     </div>
 
                     <div className={style.field}>
-                        <input type={showPassword ? "text" : "password"} className={style.input} placeholder=" " onInput={validatePassword}/>
+                        <input type={showPassword ? "text" : "password"} className={`${style.input} ${pw_color}`} placeholder=" " onInput={validatePassword}/>
                         <label htmlFor="password" className={style.label}>Password</label>
 
                        
@@ -118,7 +125,7 @@ export default function login(){
                         <li> {case1} must be at least 8 characters</li>
                         <li> {case2} must contain a capital letter</li>
                         <li> {case3} must contain a number</li>
-                        <li> {case4} must contain a special character&#160;</li><div className={style.list_horizontal} title="The password must contain at least one of these special characters: &#33;&#34;&#35;&#36;&#37;&#38;&#39;&#40;&#41;&#42;&#43;&#44;&#45;&#46;&#47;&#58;&#59;&#60;&#61;&#62;&#63;&#64;&#91;&#92;&#93;&#94;&#95;&#96;&#123;&#124;&#125;&#126;">&#9432;</div>
+                        <li> {case4} must contain a special character&#160;<div className={style.list_horizontal} title="The password must contain at least one of these special characters: &#33;&#34;&#35;&#36;&#37;&#38;&#39;&#40;&#41;&#42;&#43;&#44;&#45;&#46;&#47;&#58;&#59;&#60;&#61;&#62;&#63;&#64;&#91;&#92;&#93;&#94;&#95;&#96;&#123;&#124;&#125;&#126;">&#9432;</div></li>
                         
                    </ul>
 
