@@ -7,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     let apiRes: apiResponseMessage;
     const client = db();
     const user = new User(client);
-    user.getAll()
+    await user.getAll()
         .then((queryRes) => {
             apiRes = {
                 statusName: 'Ok',
