@@ -21,7 +21,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
         await user.register()
             .then((queryRes) => {
-                console.log(queryRes);
                 apiRes = {
                     statusName: 'Ok',
                     statusCode: 200,
