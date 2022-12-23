@@ -43,7 +43,7 @@ export class User{
     // Register a new User
     public async register(){
         return new Promise(async (resolve, reject) =>{
-            if(this.user){
+            if(this.user && this.user.usr_Nickname && this.user.usr_Email && this.user.usr_Password && this.user.usr_Admin){
                 // prepare Statement + Values + Hash Password
                 await hash((this.user.usr_Password as string), 12)
                     .then((pwHash) => {
@@ -65,7 +65,7 @@ export class User{
                        reject(e); 
                     });
             }else{
-                reject();
+                reject({'error': 'Not all informations were provided to the api!'});
             }
         });
     }
@@ -73,7 +73,7 @@ export class User{
     // Log a user in
     public async login(keepLogin: boolean){
         return new Promise(async (resolve, reject) =>{
-            if(this.user){
+            if(this.user && this.user.usr_Nickname && this.user.usr_Password){
                 // prepare Statment + Values
                 const stmt = 'SELECT * FROM "User" WHERE usr_Nickname = $1 OR usr_Email = $2;';
                 const values = [this.user.usr_Nickname, this.user.usr_Email];
@@ -127,7 +127,7 @@ export class User{
                        reject(e); 
                     });
             }else{
-                reject();
+                reject({'error': 'Not all informations were provided to the api!'});
             }
         });
     };
