@@ -43,7 +43,7 @@ export class User{
     // Register a new User
     public async register(){
         return new Promise(async (resolve, reject) =>{
-            if(this.user && this.user.usr_Nickname && this.user.usr_Email && this.user.usr_Password && this.user.usr_Admin){
+            if(this.user && this.user.usr_Nickname && this.user.usr_Email && this.user.usr_Password){
                 // prepare Statement + Values + Hash Password
                 await hash((this.user.usr_Password as string), 12)
                     .then((pwHash) => {
