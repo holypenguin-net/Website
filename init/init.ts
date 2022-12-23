@@ -18,12 +18,7 @@ async function main(){
 
 
     // Creating new Client
-    const client = new Client({
-        host: "172.16.0.102",
-        user: "holypenguin",
-        password: "holypenguin",
-        database: "holypenguin"
-    });
+    const client = new Client();
 
     // Connection to DB
     console.log("Connection to DB...");
