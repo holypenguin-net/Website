@@ -2,7 +2,7 @@
     width: 5rem;
     height: 100vh;
     position: fixed;
-    background-color: var(--bg-primary);
+    background-color: var(--color-gray-light);
     transition: 100ms ease;
 }
 
@@ -32,7 +32,7 @@
     display: flex;
     align-items: center;
     height: 5rem;
-    color: var(--text-primary);
+    color: white;
     text-decoration: none;
     filter: grayscale(100%) opacity(0.7);
     transition: var(--transition-speed);
@@ -40,8 +40,8 @@
   
 .nav_link:hover {
   filter: grayscale(0%) opacity(1);
-  background: var(--bg-secondary);
-  color: var(--text-secondary);
+  background: var(--color-gray-dark);
+  color: white;
 }
 
 .link_text {
@@ -60,8 +60,8 @@
   text-transform: uppercase;
   margin-bottom: 1rem;
   text-align: center;
-  color: var(--text-secondary);
-  background: var(--bg-secondary);
+  color: white;
+  background: var(--color-gray-dark);
   font-size: 1.5rem;
   letter-spacing: 0.3ch;
   width: 100%;
@@ -135,22 +135,22 @@
   /* .dark {
     --text-primary: #b6b6b6;
     --text-secondary: #ececec;
-    --bg-primary: #23232e;
-    --bg-secondary: #141418;
+    --color-gray-light: #23232e;
+    --color-gray-dark: #141418;
   }
   
   .light {
     --text-primary: #1f1f1f;
     --text-secondary: #000000;
-    --bg-primary: #ffffff;
-    --bg-secondary: #e4e4e4;
+    --color-gray-light: #ffffff;
+    --color-gray-dark: #e4e4e4;
   }
   
   .solar {
     --text-primary: #576e75;
     --text-secondary: #35535c;
-    --bg-primary: #fdf6e3;
-    --bg-secondary: #f5e5b8;
+    --color-gray-light: #fdf6e3;
+    --color-gray-dark: #f5e5b8;
   } */
   
   .theme-icon {

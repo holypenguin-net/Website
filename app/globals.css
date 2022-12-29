@@ -1,14 +1,13 @@
 :root {
   font-size: 16px;
   font-family: 'Sans-Serif';
-  --text-primary: #b6b6b6;
-  --text-secondary: #ececec;
-  --bg-primary: #23232e;
-  --bg-secondary: #141418;
-  --color-orange: #e75506;
-  --color-bright-iceblue: #01afac;
-  --color-dark-iceblue: #028381;
   --transition-speed: 600ms;
+  --color-yellow: #FFFF00;
+  --color-orange: #FF8000; 
+  --color-blue-light: #01afac;
+  --color-blue-dark: #028381;
+  --color-gray-light: #23232e;
+  --color-gray-dark: #141418;
 }
 
 body {
@@ -27,7 +26,7 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: var(--color-bright-iceblue);
+    background-color: var(--color-blue-light);
 }
 
 form {
