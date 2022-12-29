@@ -1,7 +1,7 @@
 export default function discord(){
     return(
         <>
-            <h1>DISCORD</h1>
+            <h1>Discord</h1>
         </>
     )
 }

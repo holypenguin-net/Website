@@ -5,6 +5,10 @@
     transform: translate(-50% , -50%);
 }
 
+.con input[type=submit]{
+    display: none;
+}
+
 .field{
     width: 100%;
     position: relative;
@@ -40,7 +44,6 @@
     opacity: 100%;
 }
 
-
 .input{
     outline: none;
     border: none;
@@ -50,7 +53,9 @@
     padding: 0.25rem 0;
     background: none;
     font-size: 1rem;
+    color: white;
 }
+
 
 .input[type=email]:valid {
     color: yellowgreen;

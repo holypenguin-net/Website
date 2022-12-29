@@ -16,9 +16,11 @@ export const HolyForm = (props: props) => {
                     {/*@ts-ignore*/}
                     <form onSubmit={props.onSubmit}>
                         {   
-                            props.children.map(child => {
+                            // check if child exist and if its more then one
+                            (props.children && props.children.length > 0) ? props.children.map(child => {
+                                // check if child is type input and not input.type = submit
                                 // @ts-ignore
-                                if(child.type === 'input' && child){
+                                if(child.type === 'input' && child.props.type !== 'submit' && child){
                                     return(
                                         <>
                                             <div className={style.field}>
@@ -36,7 +38,7 @@ export const HolyForm = (props: props) => {
                                         </>
                                     );
                                 }
-                            })
+                            }) : props.children ? props.children : " "
                         }
                     </form>
                 </div>
