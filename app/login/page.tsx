@@ -19,13 +19,9 @@ export default function Login(){
 
         if(log != null && reg != null) {
             if(log.checked) {
-                log.checked = false;
-                reg.checked = true;
                 setLogin(style.hidden)
                 setRegister(style.shown)
             } else {
-                log.checked = true;
-                reg.checked = false;
                 setLogin(style.shown)
                 setRegister(style.hidden)
             }
@@ -122,66 +118,70 @@ export default function Login(){
         <>
             <div className={style.div_con}>
                 <form className={style.form_con}>
-                    <div>
-                        <input type="checkbox" onClick={toggle} id="login" name="choice" value="creative" checked/>
-                        <label htmlFor="login">Login</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" onClick={toggle} id="register" name="choice" value="productive"/>
-                        <label htmlFor="register">Register</label>
-                    </div>
+                        <input className={style.checkbox} type="radio" onClick={toggle} id="login" name="choice" value="creative" checked/>
+                        <label className={style.label} htmlFor="login">Login</label>
+
+                        <input className={style.checkbox} type="radio" onClick={toggle} id="register" name="choice" value="productive"/>
+                        <label className={style.label} htmlFor="register">Register</label>
                 </form>
 
-                <div className={login}>
-                    <HolyForm header='Login'>
-                        <input type="email" name="name" placeholder="Nickname/Email"></input>
-                        <input type="password" name="password" placeholder="Password"></input>
-                    </HolyForm>
-                </div>
-
-                <div className={register}>
-                    <HolyForm header='Register'>
-                        <input type="text" placeholder="Nickname"></input>
-                        <input type="email" placeholder="E-Mail"></input>
-                        <input type="password" placeholder="Password" onInput={validatePassword} className={pw_color}></input>
-                        <input type="password" placeholder="Password" className={pw_color}></input>
-                        <div className={registerStyle.strength}>
-                            <span className={`${registerStyle.bar} ${registerStyle.barOne} ${strength1}`}/>
-                            <span className={`${registerStyle.bar} ${registerStyle.barTwo} ${strength2}`}/>
-                            <span className={`${registerStyle.bar} ${registerStyle.barThree} ${strength3}`}/>
-                            <span className={`${registerStyle.bar} ${registerStyle.barFour} ${strength4}`}/>
+                <div className={style.flip_card}>
+                    <div className={style.flip_card_inner}>
+                        <div className={style.flip_card_front}>
+                            <div className={login}>
+                                <HolyForm header='Login'>
+                                    <input type="email" name="name" placeholder="Nickname"></input>
+                                    <input type="password" name="password" placeholder="Password"></input>
+                                    <label>Forgot Password?</label>
+                                </HolyForm>
+                            </div>
                         </div>
+                        <div className={style.flip_card_back}>
+                            <div className={register}>
+                                <HolyForm header='Register'>
+                                    <input type="text" placeholder="Nickname"></input>
+                                    <input type="email" placeholder="E-Mail"></input>
+                                    <input type="password" placeholder="Password" onInput={validatePassword} className={pw_color}></input>
+                                    <input type="password" placeholder="Password" className={pw_color}></input>
+                                    <div className={registerStyle.strength}>
+                                        <span className={`${registerStyle.bar} ${registerStyle.barOne} ${strength1}`}/>
+                                        <span className={`${registerStyle.bar} ${registerStyle.barTwo} ${strength2}`}/>
+                                        <span className={`${registerStyle.bar} ${registerStyle.barThree} ${strength3}`}/>
+                                        <span className={`${registerStyle.bar} ${registerStyle.barFour} ${strength4}`}/>
+                                    </div>
 
-                        <ul className={registerStyle.ul}>
-                            <li> 
-                                <label className={registerStyle.label_checkbox}>
-                                    <input className={registerStyle.input_checkbox} id="val1" type="checkbox" disabled/>
-                                    <span className={registerStyle.checkbox}></span>
-                                </label> &nbsp; must be at least 8 characters
-                            </li>
-                            <li>
-                                <label className={registerStyle.label_checkbox}>
-                                    <input className={registerStyle.input_checkbox} id="val2" type="checkbox" disabled/>
-                                    <span className={registerStyle.checkbox}></span>
-                                </label> &nbsp; must contain a capital letter
-                            </li>
-                            <li>
-                                <label className={registerStyle.label_checkbox}>
-                                    <input className={registerStyle.input_checkbox} id="val3" type="checkbox" disabled/>
-                                    <span className={registerStyle.checkbox}></span>
-                                </label> &nbsp; must contain a number
-                            </li>
-                            <li>
-                                <label className={registerStyle.label_checkbox}>
-                                    <input className={registerStyle.input_checkbox} id="val4" type="checkbox" disabled/>
-                                    <span className={registerStyle.checkbox}></span>
-                                </label> &nbsp; must contain a special character&#160;<div className={registerStyle.list_horizontal} title="The password must contain at least one of these special characters: &#33;&#34;&#35;&#36;&#37;&#38;&#39;&#40;&#41;&#42;&#43;&#44;&#45;&#46;&#47;&#58;&#59;&#60;&#61;&#62;&#63;&#64;&#91;&#92;&#93;&#94;&#95;&#96;&#123;&#124;&#125;&#126;">&#9432;</div>
-                            </li>
-                        </ul>
-                    </HolyForm>
+                                    <ul className={registerStyle.ul}>
+                                        <li> 
+                                            <label className={registerStyle.label_checkbox}>
+                                                <input className={registerStyle.input_checkbox} id="val1" type="checkbox" disabled/>
+                                                <span className={registerStyle.checkbox}></span>
+                                            </label> &nbsp; must be at least 8 characters
+                                        </li>
+                                        <li>
+                                            <label className={registerStyle.label_checkbox}>
+                                                <input className={registerStyle.input_checkbox} id="val2" type="checkbox" disabled/>
+                                                <span className={registerStyle.checkbox}></span>
+                                            </label> &nbsp; must contain a capital letter
+                                        </li>
+                                        <li>
+                                            <label className={registerStyle.label_checkbox}>
+                                                <input className={registerStyle.input_checkbox} id="val3" type="checkbox" disabled/>
+                                                <span className={registerStyle.checkbox}></span>
+                                            </label> &nbsp; must contain a number
+                                        </li>
+                                        <li>
+                                            <label className={registerStyle.label_checkbox}>
+                                                <input className={registerStyle.input_checkbox} id="val4" type="checkbox" disabled/>
+                                                <span className={registerStyle.checkbox}></span>
+                                            </label> &nbsp; must contain a special character&#160;<div className={registerStyle.list_horizontal} title="The password must contain at least one of these special characters: &#33;&#34;&#35;&#36;&#37;&#38;&#39;&#40;&#41;&#42;&#43;&#44;&#45;&#46;&#47;&#58;&#59;&#60;&#61;&#62;&#63;&#64;&#91;&#92;&#93;&#94;&#95;&#96;&#123;&#124;&#125;&#126;">&#9432;</div>
+                                        </li>
+                                    </ul>
+                                </HolyForm>
+                            </div>
+                         </div>
+                     </div>
                 </div>
             </div>
-
         </>
     );
 };
