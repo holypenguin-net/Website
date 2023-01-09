@@ -14,7 +14,7 @@ export const HolyForm = (props: props) => {
                 <div className={style.box}>
                     <h1>{props.header}</h1>
                     {/*@ts-ignore*/}
-                    <form onSubmit={props.onSubmit}>
+                    <form className={style.form} onSubmit={props.onSubmit}>
                         {   
                             // check if child exist and if its more then one
                             (props.children && props.children.length > 0) ? props.children.map(child => {

@@ -75,3 +75,43 @@
     right: 0.25rem;
     bottom: 0.5rem;
 }
+
+.input_checkbox {
+    display: none;
+    pointer-events: none;
+}
+
+.label_checkbox {
+    width: 10px;
+    display: block;
+    display: inline-block;
+}
+
+.checkbox {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 1px;
+    border: 2px solid;
+    border-color: var(--text-secondary);
+    transition: 0.375s;
+}
+
+input:checked ~ .checkbox {
+    rotate: 45deg;
+    translate: 3px -1.6px;
+    width: 4px;
+    border-color: #1cc39b;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-radius: 0;
+}
+
+.ul {
+    list-style-type: none;
+    text-align: left;
+    padding-left: 0px;
+    width: max-content;
+    margin: auto;
+    margin-top: 20px;
+}

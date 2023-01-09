@@ -1,0 +1,30 @@
+.shown {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+.form_con {
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.form_con * {
+    padding: 0px 10px;
+}
+
+.div_con {
+    margin-top: 15vh;
+}
+
+.login_button {
+
+}
+
+.register_button {
+    
+}
