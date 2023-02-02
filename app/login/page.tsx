@@ -6,27 +6,9 @@ import { useState } from 'react';
 
 export default function Login(){
 
-    const [login, setLogin] = useState(style.shown);
-    const [register, setRegister] = useState(style.hidden);
-
     let showPassword = false;
     let strength = 0;
     let validations = []
-
-    function toggle() {
-        const log = document.getElementById("login") as HTMLInputElement | null;
-        const reg = document.getElementById("register") as HTMLInputElement | null;
-
-        if(log != null && reg != null) {
-            if(log.checked) {
-                setLogin(style.hidden)
-                setRegister(style.shown)
-            } else {
-                setLogin(style.shown)
-                setRegister(style.hidden)
-            }
-        }
-    }
 
     function validatePassword(e:React.ChangeEvent<HTMLInputElement>) {
         const password = e.target.value;
@@ -117,18 +99,13 @@ export default function Login(){
     return(
         <>
             <div className={style.div_con}>
-                <form className={style.form_con}>
-                        <input className={style.checkbox} type="radio" onClick={toggle} id="login" name="choice" value="creative" checked/>
-                        <label className={style.label} htmlFor="login">Login</label>
-
-                        <input className={style.checkbox} type="radio" onClick={toggle} id="register" name="choice" value="productive"/>
-                        <label className={style.label} htmlFor="register">Register</label>
-                </form>
+                <input className={style.checkbox} type="checkbox" id="login" name="choice" value="creative"/>
+                <label className={style.label} htmlFor="login"></label>
 
                 <div className={style.flip_card}>
                     <div className={style.flip_card_inner}>
                         <div className={style.flip_card_front}>
-                            <div className={login}>
+                            <div>
                                 <HolyForm header='Login'>
                                     <input type="email" name="name" placeholder="Nickname"></input>
                                     <input type="password" name="password" placeholder="Password"></input>
@@ -137,7 +114,7 @@ export default function Login(){
                             </div>
                         </div>
                         <div className={style.flip_card_back}>
-                            <div className={register}>
+                            <div>
                                 <HolyForm header='Register'>
                                     <input type="text" placeholder="Nickname"></input>
                                     <input type="email" placeholder="E-Mail"></input>
