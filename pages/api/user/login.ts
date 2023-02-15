@@ -45,7 +45,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
                         statusCode: 401,
                         isError: true,
                         // @ts-ignore
-                        msg: {"error": "Nickname or password false!"}
+                        msg: {"error": "Email or password false!"}
                     };
                     res.status(200).json(apiRes);
                 }

@@ -2,7 +2,6 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import type { apiResponseMessage } from "../../lib/types/api";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<apiResponseMessage>){
-    console.log(req.method)
     const apiRes = {
         statusName: 'Ok',
         statusCode: 200,

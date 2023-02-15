@@ -3,14 +3,58 @@ import { HolyForm } from '../../lib/components/holyform';
 import style from "./login.module.css";
 import registerStyle from "./register.module.css";
 import { useState } from 'react';
+import {holyFetch} from '../../lib/functions/holyFetch';
+import {httpMethod} from '../../lib/types/api';
 
 export default function Login(){
 
-    let showPassword = false;
+    // Fetch login
+    const [formValue, setFormValue] = useState({});
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const input = event.target;
+        setFormValue({
+            ...formValue,
+            [input.name]: input.value,
+        });
+    };
+
+    const handleSubmit = async (event: React.FormEvent) =>{
+        event.preventDefault();
+        const target = (event.target as HTMLFormElement);
+        const method = target.name === 'login' ? 'post' : 'put';
+        const url = target.name === 'login' ? '/api/user/login' : '/api/user/register';
+        await holyFetch(method as httpMethod, url, formValue)
+        //@ts-ignore
+        .then((res: string) => {
+            const data = JSON.parse(res as string);
+            if(data.isError){
+                console.log(data.msg);
+                // @ts-ignore
+            }else if(target.name !== 'login'){
+                // @ts-ignore
+                document.getElementById('choice').checked = false;
+            }
+                console.log(data.msg.jwt)
+        })
+        .catch(err => {
+            console.log(err)
+
+        });
+    };
+
+
+
+    // Vars for bar_show
     let strength = 0;
     let validations = []
+    const [strength1, setStrength1] = useState("");
+    const [strength2, setStrength2] = useState("");
+    const [strength3, setStrength3] = useState("");
+    const [strength4, setStrength4] = useState("");
+    
+    const [pw_color, setPw_Color] = useState(registerStyle.pw_color_red);
 
-    function validatePassword(e:React.ChangeEvent<HTMLInputElement>) {
+    const validatePassword = (e:React.ChangeEvent<HTMLInputElement>) => {
         const password = e.target.value;
         const val1 = document.getElementById("val1") as HTMLInputElement | null;
         const val2 = document.getElementById("val2") as HTMLInputElement | null;
@@ -88,38 +132,31 @@ export default function Login(){
         }
     }
 
-    // Vars for bar_show
-    const [strength1, setStrength1] = useState("");
-    const [strength2, setStrength2] = useState("");
-    const [strength3, setStrength3] = useState("");
-    const [strength4, setStrength4] = useState("");
-    
-    const [pw_color, setPw_Color] = useState(registerStyle.pw_color_red);
 
     return(
         <>
             <div className={style.div_con}>
-                <input className={style.checkbox} type="checkbox" id="login" name="choice" value="creative"/>
-                <label className={style.label} htmlFor="login"></label>
+                <input className={style.checkbox} type="checkbox" id="choice" name="choice" value="creative"/>
+                <label className={style.label} htmlFor="choice"></label>
 
                 <div className={style.flip_card}>
                     <div className={style.flip_card_inner}>
                         <div className={style.flip_card_front}>
                             <div>
-                                <HolyForm header='Login'>
-                                    <input type="email" name="name" placeholder="Nickname"></input>
-                                    <input type="password" name="password" placeholder="Password"></input>
+                                <HolyForm header='Login' name="login" onSubmit={handleSubmit} onChange={handleChange}>
+                                    <input type="email" name="usr_Email" placeholder="Email"/>
+                                    <input type="password" name="usr_Password" placeholder="Password"/>
                                     <label>Forgot Password?</label>
                                 </HolyForm>
                             </div>
                         </div>
                         <div className={style.flip_card_back}>
                             <div>
-                                <HolyForm header='Register'>
-                                    <input type="text" placeholder="Nickname"></input>
-                                    <input type="email" placeholder="E-Mail"></input>
-                                    <input type="password" placeholder="Password" onInput={validatePassword} className={pw_color}></input>
-                                    <input type="password" placeholder="Password" className={pw_color}></input>
+                                <HolyForm header='Register' name="register" onSubmit={handleSubmit} onChange={handleChange}>
+                                    <input type="text" placeholder="Nickname" name="usr_Nickname"/>
+                                    <input type="email" placeholder="E-Mail" name="usr_Email"/>
+                                    <input type="password" name="usr_Password" placeholder="Password" onInput={validatePassword} className={pw_color}/>
+                                    <input type="password" name="usr_Ppassword2" placeholder="Password" className={pw_color}/>
                                     <div className={registerStyle.strength}>
                                         <span className={`${registerStyle.bar} ${registerStyle.barOne} ${strength1}`}/>
                                         <span className={`${registerStyle.bar} ${registerStyle.barTwo} ${strength2}`}/>

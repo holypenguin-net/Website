@@ -73,7 +73,7 @@ export class User{
     // Log a user in
     public async login(keepLogin: boolean){
         return new Promise(async (resolve, reject) =>{
-            if(this.user && this.user.usr_Nickname && this.user.usr_Password){
+            if(this.user && (this.user.usr_Nickname || this.user.usr_Email) && this.user.usr_Password){
                 // prepare Statment + Values
                 const stmt = 'SELECT * FROM "User" WHERE usr_Nickname = $1 OR usr_Email = $2;';
                 const values = [this.user.usr_Nickname, this.user.usr_Email];

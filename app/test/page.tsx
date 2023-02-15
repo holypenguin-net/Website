@@ -7,8 +7,8 @@ import { holyFetch } from "../../lib/functions/holyFetch";
 export default function Test(){
     const [formValue, setFormValue] = useState({});
 
-    const handleInput = (input: React.ChangeEventHandler<HTMLInputElement>) => {
-        input = input.target;
+    const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const input = event.target;
         setFormValue({
             ...formValue,
             [input.name]: input.value

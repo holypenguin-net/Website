@@ -14,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
                 statusCode: 200,
                 isError: false,
                 // @ts-ignore
-                msg: queryRes.rows[0]
+                msg: queryRes.rows
             };
             res.status(200).json(apiRes);
         })

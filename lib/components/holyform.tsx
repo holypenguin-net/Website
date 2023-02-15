@@ -6,21 +6,21 @@ type props = {
     onSubmit?: Function | void,
     onChange?: Function | void,
     onInput?: Function | void,
-    header: string,
+    header?: string,
     children: Array<ReactNode>,
     action?: string,
     method?: httpMethod,
+    name?: string,
 }
 
 export const HolyForm = (props: props) => {
-
     return(
         <>
             <div className={style.con}>
                 <div className={style.box}>
                     <h1>{props.header}</h1>
                     {/*@ts-ignore*/}
-                    <form className={style.form} onSubmit={props.onSubmit} action={props.action} method={props.method} onChange={props.onChange}>
+                    <form className={style.form} onSubmit={props.onSubmit} name={props.name} action={props.action} method={props.method} onChange={props.onChange}>
                         {   
                             // check if child exist and if its more then one
                             (props.children && props.children.length > 0) ? props.children.map((child, index) => {
@@ -37,9 +37,9 @@ export const HolyForm = (props: props) => {
                                     );
                                 } else {
                                     return(
-                                        <>
+                                        <div key={index}>
                                             {child}
-                                        </>
+                                        </div>
                                     );
                                 }
                             }) : props.children ? props.children : " "
