@@ -5,9 +5,13 @@ import registerStyle from "./register.module.css";
 import { useState } from 'react';
 import {holyFetch} from '../../lib/functions/holyFetch';
 import {httpMethod} from '../../lib/types/api';
+import { setCookie } from "cookies-next";
+import { useRouter } from "next/navigation";
 
 export default function Login(){
 
+    // Router
+    const router = useRouter();
     // Fetch login
     const [errorMsg, setErrorMsg] = useState("");
     const [formValue, setFormValue] = useState({});
@@ -39,6 +43,8 @@ export default function Login(){
                 setErrorMsg(data.msg.error);
             } else {
                 console.log(data.msg.jwt);
+                setCookie('session', data.msg.jwt);
+                router.push('/');
             }
         })
         .catch(err => {
@@ -78,7 +84,7 @@ export default function Login(){
             (password.search(/[0-9]/) > -1),
             (password.search(/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/) > -1),
         ]
-        const pwCheck = (pw1 && pw2 && pw1.value === pw2.value);
+        const pwCheck = (pw1 && pw2 && pw1.value === pw2.value && pw2.value !== "");
 
         //strength = validations.reduce((acc, cur) => acc + +cur, 0)
         strength = validations.reduce((acc, cur) => acc + +cur, 0);
