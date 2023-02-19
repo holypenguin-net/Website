@@ -30,14 +30,14 @@ export const HolyForm = (props: props) => {
                                 if(child.type === 'input' && !['submit', 'checkbox'].includes(child.props.type) && child){
                                     return(
                                         <div className={style.field} key={index}>
-                                            <input className={`${style.input} ${child.props.className}`} id={child.props.id} type={child.props.type} name={child.props.name} onInput={child.props.onInput} onChange={child.props.onChange} placeholder=" "/>
+                                            <input className={`${style.input} ${child.props.className}`} id={child.props.id} type={child.props.type} name={child.props.name} onInput={child.props.onInput} onChange={child.props.onChange} placeholder=" " required={child.props.required}/>
                                             <label className={style.label}>{child.props.placeholder}</label>
                                         </div>
                                     );
                                 } else if(child && child.props.type === 'checkbox') {
                                     return(
                                         <div key={index}>
-                                            <input id={child.props.id} type="checkbox" name={child.props.name} onChange={child.props.onChange} placeholder=" "/>
+                                            <input id={child.props.id} type="checkbox" name={child.props.name} onChange={child.props.onChange} placeholder=" " required={child.props.required}/>
                                             <label>{child.props.placeholder}</label>
                                         </div>
                                     );

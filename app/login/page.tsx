@@ -17,7 +17,6 @@ export default function Login(){
             ...formValue,
             [input.name]: input.type !== 'checkbox' ? input.value : input.checked,
         });
-        console.log(formValue)
     };
 
     const handleSubmit = async (event: React.FormEvent) =>{
@@ -61,10 +60,10 @@ export default function Login(){
     const [strength3, setStrength3] = useState("");
     const [strength4, setStrength4] = useState("");
     
-    const [pw_color, setPw_Color] = useState(registerStyle.pw_color_red);
-
     const validatePassword = (e:React.ChangeEvent<HTMLInputElement>) => {
         const password = e.target.value;
+        e.target.setCustomValidity("Password is invalid! See Checkboxes bellow.")
+        e.target.style.color = "orangered";
         const pw1 = document.getElementById("pw1") as HTMLInputElement | null;
         const pw2 = document.getElementById("pw2") as HTMLInputElement | null;
         const val1 = document.getElementById("val1") as HTMLInputElement | null;
@@ -72,7 +71,6 @@ export default function Login(){
         const val3 = document.getElementById("val3") as HTMLInputElement | null;
         const val4 = document.getElementById("val4") as HTMLInputElement | null;
         const val5 = document.getElementById("val5") as HTMLInputElement | null;
-
 
         validations = [
             (password.length >= 8),
@@ -85,43 +83,46 @@ export default function Login(){
         //strength = validations.reduce((acc, cur) => acc + +cur, 0)
         strength = validations.reduce((acc, cur) => acc + +cur, 0);
 
-        console.log(strength)
-
         switch(strength){
             case 0:
                 setStrength1("");
                 setStrength2("");
                 setStrength3("");
                 setStrength4("");
-                setPw_Color(registerStyle.pw_color_red);
+                e.target.style.color = "orangered";
+                e.target.setCustomValidity("Password is invalid! See Checkboxes bellow.")
                 break;
             case 1:
                 setStrength1(registerStyle.bar_show);
                 setStrength2("");
                 setStrength3("");
                 setStrength4("");
-                setPw_Color(registerStyle.pw_color_red);
+                e.target.style.color = "orangered";
+                e.target.setCustomValidity("Password is invalid! See Checkboxes bellow.")
                 break;
             case 2:
                 setStrength1(registerStyle.bar_show);
                 setStrength2(registerStyle.bar_show);
                 setStrength3("");
                 setStrength4("");
-                setPw_Color(registerStyle.pw_color_red);
+                e.target.style.color = "orangered";
+                e.target.setCustomValidity("Password is invalid! See Checkboxes bellow.")
                 break;
             case 3:
                 setStrength1(registerStyle.bar_show);
                 setStrength2(registerStyle.bar_show);
                 setStrength3(registerStyle.bar_show);
                 setStrength4("");
-                setPw_Color(registerStyle.pw_color_red);
+                e.target.style.color = "orangered";
+                e.target.setCustomValidity("Password is invalid! See Checkboxes bellow.")
                 break;
             case 4:
                 setStrength1(registerStyle.bar_show);
                 setStrength2(registerStyle.bar_show);
                 setStrength3(registerStyle.bar_show);
                 setStrength4(registerStyle.bar_show);
-                setPw_Color(registerStyle.pw_color_green);
+                e.target.style.color = "yellowgreen";
+                e.target.setCustomValidity("")
                 break;
             }
 
@@ -148,8 +149,13 @@ export default function Login(){
                 }
                 if (pwCheck){
                     val5.checked = true;
-                } else{
+                    e.target.setCustomValidity("")
+                    
+                } else if(pw2 != null){
                     val5.checked = false;
+                    //setPw_Color(registerStyle.pw_color_red);
+                    pw2.setCustomValidity("Password does not match!")
+                    pw2.style.color = "orangered";
                 }
             }
         }
@@ -165,8 +171,8 @@ export default function Login(){
                         <div className={style.flip_card_front}>
                             <div>
                                 <HolyForm header='Login' name="login" onSubmit={handleSubmit} onChange={handleChange}>
-                                    <input type="email" name="usr_Email" placeholder="Email"/>
-                                    <input type="password" name="usr_Password" placeholder="Password"/>
+                                    <input type="email" name="usr_Email" placeholder="Email" required/>
+                                    <input type="password" name="usr_Password" placeholder="Password" required/>
                                     <input type="checkbox" name="keepLogin" placeholder="Keep me 30 days logged in!"/>
                                     <div className={style.error}>{errorMsg}</div>
                                     <label>Forgot Password?</label>
@@ -176,10 +182,10 @@ export default function Login(){
                         <div className={style.flip_card_back}>
                             <div>
                                 <HolyForm header='Register' name="register" onSubmit={handleSubmit} onChange={handleChange}>
-                                    <input type="text" placeholder="Nickname" name="usr_Nickname"/>
-                                    <input type="email" placeholder="E-Mail" name="usr_Email"/>
-                                    <input type="password" id="pw1" name="usr_Password" placeholder="Password" onInput={validatePassword} className={pw_color}/>
-                                    <input type="password" id="pw2" name="usr_Password2" placeholder="Password" onInput={validatePassword} className={pw_color}/>
+                                    <input type="text" placeholder="Nickname" name="usr_Nickname" required/>
+                                    <input type="email" placeholder="E-Mail" name="usr_Email" required/>
+                                    <input type="password" id="pw1" name="usr_Password" placeholder="Password" onInput={validatePassword} required/>
+                                    <input type="password" id="pw2" name="usr_Password2" placeholder="Password" onInput={validatePassword} required/>
                                     <div className={style.error}>{errorMsg}</div>
                                     <div className={registerStyle.strength}>
                                         <span className={`${registerStyle.bar} ${registerStyle.barOne} ${strength1}`}/>
