@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
-import {httpMethod} from "../types/api";
-import style from './holyform.module.css'; 
+import { ReactElement, ReactNode } from "react";
+import {httpMethod} from "../../types/api";
+import style from './component.module.css'; 
 
 type props = {
     onSubmit?: Function | void,
@@ -23,16 +23,22 @@ export const HolyForm = (props: props) => {
                     <form className={style.form} onSubmit={props.onSubmit} name={props.name} action={props.action} method={props.method} onChange={props.onChange}>
                         {   
                             // check if child exist and if its more then one
-                            (props.children && props.children.length > 0) ? props.children.map((child, index) => {
+                            (props.children && props.children.length > 0) ? props.children.map((childItem, index) => {
+                                const child = childItem as ReactElement;
+                                
                                 // check if child is type input and not input.type = submit
-                                // @ts-ignore
-                                if(child.type === 'input' && child.props.type !== 'submit' && child){
+                                if(child.type === 'input' && !['submit', 'checkbox'].includes(child.props.type) && child){
                                     return(
                                         <div className={style.field} key={index}>
-                                            {/*@ts-ignore*/}
-                                            <input className={`${style.input} ${child.props.className}`} type={child.props.type} name={child.props.name} onInput={child.props.onInput} onChange={child.props.onChange} placeholder=" "/>
-                                            {/*@ts-ignore*/}
+                                            <input className={`${style.input} ${child.props.className}`} id={child.props.id} type={child.props.type} name={child.props.name} onInput={child.props.onInput} onChange={child.props.onChange} placeholder=" "/>
                                             <label className={style.label}>{child.props.placeholder}</label>
+                                        </div>
+                                    );
+                                } else if(child && child.props.type === 'checkbox') {
+                                    return(
+                                        <div key={index}>
+                                            <input id={child.props.id} type="checkbox" name={child.props.name} onChange={child.props.onChange} placeholder=" "/>
+                                            <label>{child.props.placeholder}</label>
                                         </div>
                                     );
                                 } else {

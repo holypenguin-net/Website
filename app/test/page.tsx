@@ -1,5 +1,5 @@
 "use client"
-import { HolyForm } from "../../lib/components/holyform"
+import { HolyForm } from "../../lib/components/holyform/component"
 import { useState } from "react";
 import { httpMethod } from "../../lib/types/api";
 import { holyFetch } from "../../lib/functions/holyFetch";

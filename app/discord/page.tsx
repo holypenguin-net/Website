@@ -1,4 +1,4 @@
-import { HolyForm } from "../../lib/components/holyform"
+import { HolyForm } from "../../lib/components/holyform/component"
 
 export default function discord(){
     return(

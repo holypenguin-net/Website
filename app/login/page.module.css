@@ -93,3 +93,8 @@
     transform: rotateY(180deg);
   }
 
+.error{
+    margin-bottom: 20px;
+    color: red;
+}
+
