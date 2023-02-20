@@ -4,17 +4,19 @@ import "./globals.css";
 import style from "./navbar.module.css";
 import nav_icon from "../public/icons/dark/nav_icon_dark.svg";
 import news from "../public/icons/dark/news_dark.svg";
-import logo from "../public/icons/dark/logo_dark.svg";
 import server from "../public/icons/dark/server_dark.svg";
 import games from "../public/icons/dark/game_dark.svg";
 import minecraft from "../public/icons/minecraft.svg";
 import terraria from "../public/icons/terraria.svg";
 import discord from "../public/icons/discord.svg";
 import login from "../public/icons/dark/login_dark.svg";
-
+import { cookies } from 'next/headers';
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   let image_size = 300;
+
+  const cookieStore = cookies();
+  const sessionToken = cookieStore.get('session');
 
   return (
     <html>
@@ -75,12 +77,22 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
               </Link>
             </li>
 
-            <li className={style.nav_item}>
-              <Link href="/login" className={style.nav_link}>
-                <Image src={login} alt='Login' width={image_size} height={image_size}/>
-                <span className={style.link_text}>Login</span>
-              </Link>
-            </li>
+            {sessionToken == null &&
+                <li className={style.nav_item}>
+                  <Link href="/login" className={style.nav_link}>
+                    <Image src={login} alt='Login' width={image_size} height={image_size}/>
+                    <span className={style.link_text}>Login</span>
+                  </Link>
+                </li>
+            }
+            {sessionToken != null &&
+              <li className={style.nav_item}>
+                  <Link href="/logout" className={style.nav_link}>
+                    <span className={style.link_text}>Logout</span>
+                  </Link>
+              </li>
+            }
+
           </div>
 
           </ul>

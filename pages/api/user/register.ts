@@ -5,7 +5,7 @@ import { User } from '../../../lib/classes/user';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<apiResponseMessage>){
     let apiRes: apiResponseMessage;
-    if(req.method === "POST"){
+    if(req.method === "PUT"){
         // Prepare DB
         const client = db();
 

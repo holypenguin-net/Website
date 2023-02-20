@@ -1,3 +1,6 @@
+// Every possible HTTP-Method
+export type httpMethod = 'get' | 'post' | 'put' | 'patch' | 'delete';
+
 // Every possible Status Name
 export type statusNames = 'Ok' | 'Failed' | 'Informational' | 'Redirected' | 'Unknown' | 'Bad Request' | 'Internal Server Error';
 
