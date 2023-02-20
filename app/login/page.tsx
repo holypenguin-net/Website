@@ -6,12 +6,8 @@ import { useState } from 'react';
 import {holyFetch} from '../../lib/functions/holyFetch';
 import {httpMethod} from '../../lib/types/api';
 import { setCookie } from "cookies-next";
-import { useRouter } from "next/navigation";
 
 export default function Login(){
-
-    // Router
-    const router = useRouter();
     // Fetch login
     const [errorMsg, setErrorMsg] = useState("");
     const [formValue, setFormValue] = useState({});
@@ -44,7 +40,7 @@ export default function Login(){
             } else {
                 console.log(data.msg.jwt);
                 setCookie('session', data.msg.jwt);
-                router.push('/');
+                document.location.href = "/";
             }
         })
         .catch(err => {
