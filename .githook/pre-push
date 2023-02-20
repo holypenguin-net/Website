@@ -6,7 +6,7 @@ set -e
 branch="$(git rev-parse --abbrev-ref HEAD)"
 
 # If we are on master
-if [ $branch = "main" ]; then
+#if [ $branch = "main" ]; then
 
     # Build
     printf "\e[1;33mpre-push:\e[0m: npm run build\n"
@@ -18,6 +18,6 @@ if [ $branch = "main" ]; then
         printf "\e[1;31mError:\e[0m npm run build\n"
         exit 1
     fi
-fi
+#fi
 
 exit 0
